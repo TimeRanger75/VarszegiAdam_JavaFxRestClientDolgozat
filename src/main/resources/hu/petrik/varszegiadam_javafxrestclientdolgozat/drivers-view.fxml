@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="hu.petrik.varszegiadam_javafxrestclientdolgozat.HelloController">
+<VBox prefHeight="600.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.petrik.varszegiadam_javafxrestclientdolgozat.DriversController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+   <children>
+      <HBox spacing="20.0">
+         <children>
+            <Button fx:id="insertButton" mnemonicParsing="false" onAction="#insertClick" text="Insert" />
+            <Button fx:id="updateBtn" mnemonicParsing="false" onAction="#updateClick" text="Update" />
+            <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#deleteClick" text="Delete" />
+         </children>
+      </HBox>
+      <TableView fx:id="driverTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+        <columns>
+          <TableColumn fx:id="id_Col" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="driver_Col" prefWidth="200.0" text="Driver's name" />
+            <TableColumn fx:id="team_Col" prefWidth="200.0" text="Team" />
+            <TableColumn fx:id="ret_Col" prefWidth="75.0" text="Retired" />
+            <TableColumn fx:id="start_Col" prefWidth="75.0" text="Start year" />
+        </columns>
+      </TableView>
+   </children>
 </VBox>
