@@ -68,7 +68,6 @@ public class DriversController {
     @FXML
     public void insertClick(ActionEvent actionEvent) {
         try {
-            //System.out.println("Faszba már");
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("create-driver-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 640, 480);
             Stage stage = new Stage();
