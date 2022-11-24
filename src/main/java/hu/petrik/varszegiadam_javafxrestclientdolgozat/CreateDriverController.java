@@ -55,7 +55,7 @@ public class CreateDriverController {
         }
         if (retiredCheck.isSelected()){
             retired=true;
-            return;
+
         }
 
         Driver newDriver=new Driver(0, driver_name, team_name, retired, start);
