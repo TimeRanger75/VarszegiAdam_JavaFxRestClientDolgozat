@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class CreateDriverController {
     @FXML
@@ -22,7 +23,7 @@ public class CreateDriverController {
 
     @FXML
     private void initialize(){
-        SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory= new SpinnerValueFactory.IntegerSpinnerValueFactory(2002, 2020, 2007);
+        SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory= new SpinnerValueFactory.IntegerSpinnerValueFactory(2002, LocalDate.now().getYear(), 2007);
         startField.setValueFactory(valueFactory);
     }
 
@@ -46,13 +47,7 @@ public class CreateDriverController {
             alert.showAndWait();
             return;
         }
-        if (team_name.isEmpty()){
-            Alert alert =new Alert(Alert.AlertType.WARNING);
-            alert.setContentText("Team is required");
-            alert.setTitle("Warning");
-            alert.showAndWait();
-            return;
-        }
+
         if (retiredCheck.isSelected()){
             retired=true;
 

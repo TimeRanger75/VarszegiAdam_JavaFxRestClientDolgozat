@@ -31,7 +31,7 @@
       <TextField fx:id="teamField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <Spinner fx:id="startField" prefWidth="100000.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <CheckBox fx:id="retiredCheck" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-      <Button fx:id="uploadBtn" mnemonicParsing="false" onAction="#uploadClick" prefWidth="100000.0" text="Button" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+      <Button fx:id="uploadBtn" mnemonicParsing="false" onAction="#uploadClick" prefWidth="100000.0" text="Create" GridPane.columnSpan="2" GridPane.rowIndex="4" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

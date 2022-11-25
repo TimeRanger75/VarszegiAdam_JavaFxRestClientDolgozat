@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class DriversController {
 
@@ -83,6 +84,7 @@ public class DriversController {
                     alert.showAndWait();
                 }
             });
+            stage.show();
         }catch (IOException e){
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -93,10 +95,57 @@ public class DriversController {
 
     @FXML
     public void updateClick(ActionEvent actionEvent) {
+        Driver selected = driverTable.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Choose a driver to update their datas");
+            alert.showAndWait();
+            return;
+        }
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("update-driver-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 640, 480);
+            UpdateDriverController controller = fxmlLoader.getController();
+            controller.setDriver(selected);
+            Stage stage = new Stage();
+            stage.setTitle("Update "+ selected.getDriver_name());
+            stage.setScene(scene);
+            stage.setOnHidden(event -> {
+                try {
+                    loadDrivers();
+                } catch (IOException e) {
+                    Alert alert=new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Cannot connect to the server");
+                    alert.showAndWait();
+                }
+            });
+            stage.show();
+        } catch (IOException e) {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error occured on form open");
+            alert.showAndWait();
+        }
 
     }
 
     @FXML
     public void deleteClick(ActionEvent actionEvent) {
+        Driver selected = driverTable.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            Alert alert =new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Choose a driver to delete");
+            alert.showAndWait();
+            return;
+        }
+            String url = App.BASE_URL + "/" + selected.getId();
+            try {
+                RequestHandler.delete(url);
+                loadDrivers();
+            } catch (IOException e) {
+                Alert alert=new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Cannot connect to the server");
+                alert.showAndWait();
+            }
+
     }
 }
